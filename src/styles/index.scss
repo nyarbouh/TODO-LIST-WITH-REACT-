@@ -34,7 +34,10 @@ body{
 .list-group{
     box-shadow: 18px 21px 9px -12px rgba(181,178,152,1);
     list-style-type: none;
-    border-bottom: 1px solid #adadad;
+}
+ul > li{
+    list-style: none;
+      border-bottom: 1px solid #adadad;
 }
 .footer{
   width: 100%;
@@ -42,14 +45,15 @@ body{
   box-sizing: border-box;
   font-size: 20px;
   font-family: 'Open Sans Condensed', sans-serif;
-  border-top: 1px solid #adadad;
   color: darkgray;
 }
 
 .far {
     float: right;
     padding-right: 15px;
+    padding-top: 7px;
     visibility:hidden;
+    cursor: pointer;
 }
 li:hover > .far {
  visibility:visible;

@@ -1,6 +1,8 @@
 import React from "react";
 import Proptypes from "prop-types";
 
+let API = "https://assets.breatheco.de/apis/fake/todos/user/nyarbouh";
+
 export default class Fields extends React.Component {
 	constructor() {
 		super();
@@ -23,18 +25,19 @@ export default class Fields extends React.Component {
 			})
 			.catch(error => console.log(error));
 	}
-	deleteTodo(e) {
-		this.setState({
-			list: this.state.list.filter(index => index.list !== e)
-		});
-	}
+	deleteElement = sky => {
+		let temp = this.state.list;
+		temp.splice(sky, 1);
+		this.setState({ list: temp });
+	};
+
 	render() {
 		let arr = this.state.list.map((blue, index) => {
 			return (
 				<li key={index}>
 					<i
 						className="far fa-trash-alt"
-						onClick={() => this.deleteTodo(index.list)}
+						onClick={() => this.deleteElement(index)}
 					/>
 					{blue.label}
 				</li>
@@ -56,14 +59,13 @@ export default class Fields extends React.Component {
 							: null
 					}
 				/>
-
-				<ul className="list-group">{arr}</ul>
-				<div className="footer">
-					<p>
+				<div className="list-group">
+					<ul className="listinside">{arr}</ul>
+					<div className="footer">
 						You have&nbsp;
 						{this.state.list.length}
 						&nbsp;tasks to get done
-					</p>
+					</div>
 				</div>
 			</div>
 		);
